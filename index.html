@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probabilidad — Guía visual | Estadística UCC</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f8f6;
+      color: #1a1a18;
+      padding: 1.5rem 1rem 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Header centrado */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      gap: 10px;
+    }
+    .header img {
+      height: 80px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 4px;
+    }
+    .inf-title {
+      font-family: 'Montserrat', 'Arial Black', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #1a1a18;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .inf-subtitle {
+      font-size: 13px;
+      color: #6b6b66;
+      margin-top: 2px;
+    }
+    .inf-autora {
+      font-size: 12.5px;
+      color: #6b6b66;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .section { background: #fff; border-radius: 12px; border: 0.5px solid #ddddd8; padding: 14px 16px; margin-bottom: 14px; }
+    .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .sec-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+    .sec-title { font-size: 15px; font-weight: 600; color: #1a1a18; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    @media (max-width: 600px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+    .pill { border-radius: 8px; padding: 10px 12px; }
+    .pill-title { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+    .pill-body { font-size: 11.5px; line-height: 1.55; color: #444440; }
+    .formula-box { border-radius: 8px; padding: 8px 12px; font-size: 12.5px; margin-top: 8px; font-family: 'Courier New', monospace; text-align: center; }
+    .row { display: flex; gap: 10px; }
+    .row > * { flex: 1; }
+
+    .bg-purple { background: #EEEDFE; } .t-purple { color: #3C3489; }
+    .bg-purple-pill { background: #EEEDFE; border: 0.5px solid #AFA9EC; }
+    .bg-teal { background: #E1F5EE; } .t-teal { color: #085041; }
+    .bg-teal-pill { background: #E1F5EE; border: 0.5px solid #5DCAA5; }
+    .bg-amber { background: #FAEEDA; } .t-amber { color: #633806; }
+    .bg-amber-pill { background: #FAEEDA; border: 0.5px solid #EF9F27; }
+    .bg-blue { background: #E6F1FB; } .t-blue { color: #0C447C; }
+    .bg-blue-pill { background: #E6F1FB; border: 0.5px solid #85B7EB; }
+    .bg-coral { background: #FAECE7; } .t-coral { color: #712B13; }
+    .bg-coral-pill { background: #FAECE7; border: 0.5px solid #F0997B; }
+    .bg-pink { background: #FBEAF0; } .t-pink { color: #72243E; }
+    .bg-pink-pill { background: #FBEAF0; border: 0.5px solid #ED93B1; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/UCC_logo_vectorial.svg/320px-UCC_logo_vectorial.svg.png"
+      alt="Logo Universidad Católica de Córdoba"
+      onerror="this.style.display='none'"
+    >
+    <div class="inf-title">Probabilidad — Guía visual</div>
+    <div class="inf-subtitle">Estadística General · Relaciones Internacionales 2026 · UCC</div>
+    <div class="inf-autora">Autora: Dra. Aimé Aminahuel</div>
+  </div>
+
+  <!-- 1 -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon bg-purple"><i class="ti ti-bulb t-purple"></i></div>
+      <span class="sec-title">Concepto intuitivo de probabilidad</span>
+    </div>
+    <div class="row">
+      <div class="pill bg-purple-pill">
+        <div class="pill-title t-purple">¿Qué es?</div>
+        <div class="pill-body">Medida numérica de la posibilidad de que ocurra un evento. Siempre entre 0 (imposible) y 1 (seguro).</div>
+      </div>
+      <div class="pill bg-purple-pill">
+        <div class="pill-title t-purple">Ejemplo cotidiano</div>
+        <div class="pill-body">Lanzar una moneda: cara o cruz. Tirar un dado: 6 resultados igualmente posibles.</div>
+      </div>
+    </div>
+    <div class="formula-box bg-purple t-purple">0 ≤ P(A) ≤ 1 &nbsp;|&nbsp; P(imposible) = 0 &nbsp;|&nbsp; P(seguro) = 1</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon bg-teal"><i class="ti ti-circle-dotted t-teal"></i></div>
+      <span class="sec-title">Espacio muestral y espacio probabilístico</span>
+    </div>
+    <div class="grid3">
+      <div class="pill bg-teal-pill">
+        <div class="pill-title t-teal">Espacio muestral (Ω)</div>
+        <div class="pill-body">Conjunto de <em>todos</em> los resultados posibles de un experimento.<br><br>Dado: Ω = {1, 2, 3, 4, 5, 6}</div>
+      </div>
+      <div class="pill bg-teal-pill">
+        <div class="pill-title t-teal">Evento (A)</div>
+        <div class="pill-body">Subconjunto del espacio muestral. Puede ser simple (un resultado) o compuesto (varios).<br><br>A = "sacar par" = {2, 4, 6}</div>
+      </div>
+      <div class="pill bg-teal-pill">
+        <div class="pill-title t-teal">Espacio probabilístico</div>
+        <div class="pill-body">Tripleta (Ω, F, P) donde F es una σ-álgebra de eventos y P la función de probabilidad.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon bg-amber"><i class="ti ti-school t-amber"></i></div>
+      <span class="sec-title">Teorías de probabilidad</span>
+    </div>
+    <div class="grid3">
+      <div class="pill bg-amber-pill">
+        <div class="pill-title t-amber">Clásica (Laplace)</div>
+        <div class="pill-body">Resultados igualmente posibles.<br><br>P(A) = casos favorables / casos posibles</div>
+      </div>
+      <div class="pill bg-amber-pill">
+        <div class="pill-title t-amber">Frecuentista</div>
+        <div class="pill-body">Basada en la frecuencia relativa al repetir el experimento muchas veces.<br><br>P(A) = límite de f/n</div>
+      </div>
+      <div class="pill bg-amber-pill">
+        <div class="pill-title t-amber">Subjetiva (Bayesiana)</div>
+        <div class="pill-body">Grado de creencia personal actualizado con nueva evidencia usando el teorema de Bayes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon bg-coral"><i class="ti ti-arrows-split-2 t-coral"></i></div>
+      <span class="sec-title">Tipos de eventos</span>
+    </div>
+    <div class="grid3">
+      <div class="pill bg-coral-pill">
+        <div class="pill-title t-coral">Mutuamente excluyentes</div>
+        <div class="pill-body">No pueden ocurrir al mismo tiempo.<br>A ∩ B = ∅<br><br>Ej: sacar cara Y cruz en la misma tirada.</div>
+      </div>
+      <div class="pill bg-coral-pill">
+        <div class="pill-title t-coral">Independientes</div>
+        <div class="pill-body">La ocurrencia de uno no afecta al otro.<br>P(A∩B) = P(A)·P(B)<br><br>Ej: lanzar dos dados distintos.</div>
+      </div>
+      <div class="pill bg-coral-pill">
+        <div class="pill-title t-coral">Dependientes</div>
+        <div class="pill-body">La ocurrencia de uno sí afecta al otro.<br>P(A∩B) = P(A)·P(B|A)<br><br>Ej: extraer cartas sin reposición.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon bg-blue"><i class="ti ti-refresh t-blue"></i></div>
+      <span class="sec-title">Experimentos con y sin reposición</span>
+    </div>
+    <div class="grid2">
+      <div class="pill bg-blue-pill">
+        <div class="pill-title t-blue">✓ Con reposición</div>
+        <div class="pill-body">El elemento extraído se devuelve antes de la siguiente extracción. El espacio muestral no cambia. Los eventos son independientes.</div>
+        <div class="formula-box bg-blue t-blue">P constante en cada extracción</div>
+      </div>
+      <div class="pill bg-blue-pill">
+        <div class="pill-title t-blue">✗ Sin reposición</div>
+        <div class="pill-body">El elemento no se devuelve. El espacio muestral se reduce. Los eventos son dependientes (P cambia en cada extracción).</div>
+        <div class="formula-box bg-blue t-blue">P varía en cada extracción</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-icon bg-pink"><i class="ti ti-math-function t-pink"></i></div>
+      <span class="sec-title">Probabilidad conjunta, unión, intersección y condicional</span>
+    </div>
+    <div class="grid2">
+      <div class="pill bg-pink-pill">
+        <div class="pill-title t-pink">Probabilidad conjunta — P(A ∩ B)</div>
+        <div class="pill-body">Probabilidad de que A y B ocurran simultáneamente.</div>
+        <div class="formula-box bg-pink t-pink">Indep.: P(A)·P(B)<br>Dep.: P(A)·P(B|A)</div>
+      </div>
+      <div class="pill bg-pink-pill">
+        <div class="pill-title t-pink">Probabilidad de unión — P(A ∪ B)</div>
+        <div class="pill-body">Probabilidad de que ocurra A, B o ambos.</div>
+        <div class="formula-box bg-pink t-pink">P(A) + P(B) − P(A∩B)</div>
+      </div>
+      <div class="pill bg-pink-pill">
+        <div class="pill-title t-pink">Intersección — P(A ∩ B)</div>
+        <div class="pill-body">Región común a ambos eventos en el diagrama de Venn.</div>
+        <div class="formula-box bg-pink t-pink">Si excl.: P(A∩B) = 0</div>
+      </div>
+      <div class="pill bg-pink-pill">
+        <div class="pill-title t-pink">Probabilidad condicional — P(A|B)</div>
+        <div class="pill-body">Probabilidad de A dado que B ya ocurrió. Restringe el espacio muestral a B.</div>
+        <div class="formula-box bg-pink t-pink">P(A|B) = P(A∩B) / P(B)</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
